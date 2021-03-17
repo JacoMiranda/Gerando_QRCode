@@ -1,0 +1,35 @@
+<div class="alert alert-primary mt-1" role="alert" *ngIf="adicionado">
+  O <strong>{{valorAtual}}</strong> foi gerado.
+</div>
+<!-- two-way databinding, deve-se fazer o importe no app.modules do formModules para funcionar -->
+
+<div class="form-group">
+
+  <input  #campoInput class="form-control force-inline" type="text"
+  (keyup)="onKeyUp($event)"
+  (keyup.enter)="salvarValor($event.target.value)"
+  [(ngModel)]="valor"
+  (focus)="adicionado = false" style="max-width: 25%;"
+    placeholder="XX-XX- descriçao" />
+
+<button type="button" class="btn btn-primary" (click)="salvarValor(valor)" bind-disabled="valor.length ==0">Gerar</button>
+
+  <!-- <div class="row mx-5">
+    <div class="col-md-2">
+      <input type="text" class="form-control" placeholder="Inicial"
+      [(ngModel)]="inicial" #inicialInput>
+    </div>
+    <div class="col-md-2">
+      <input type="text" class="form-control" placeholder="Final" [(ngModel)]="final" #finalInput>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Descrição" [(ngModel)]="descricao" #descricaoInput>
+    </div>
+    <div class="col-md-1">
+
+      <button type="button" class="btn btn-primary"
+      [disabled]="(inicial.length && final.length && descricao.length) == 0">Gerar</button>
+    </div> -->
+
+  </div>
+
